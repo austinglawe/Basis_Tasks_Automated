@@ -1,3 +1,45 @@
+To start there are a few steps, when opening a brand new excel workbook.
+
+You will need to create two worksheets (tabs) called (without the quotes I used here):
+"Home"
+"All Reports Combined"
+
+Once these two worksheets are created, you need to go the "Home" worksheet. In cell A1 put "File Name". In cell B1 you need to type "Completed". In cell O1, you need to put your file path.
+To do this, go into the folder you have all the reports in. For me I have a folder on my desktop called: "Cyber Grants Reports - as of 2023.11.08".
+
+Click on the top portion (like a search bar). It will have something similar to the following:
+This PC > Desktop > Cyber Grants Reports - as of 2023.11.08
+
+Once I click on that area. It will change what appears there. Mine shows the following:
+C:\Users\austin.glawe\OneDrive - BASIS.ed\Desktop\Cyber Grants Reports - as of 2023.11.08
+
+Then you will need to copy it and paste it into the "Home" worksheet in cell O1.
+
+Once that is completed, go to the "All Reports Combined" and put the following columns in Row 1 (the corresponding column,row ID is above each):
+
+    A1                B1                    C1                    D1                E1                    F1                    G1                    H1                  I1              
+Company Name | Pass-through Agent | CyberGrants Donation ID | Program Name | Donation Start Date | Donation End Date | Donation Designation | Donation Frequency | Donation Amount | 
+
+        J1                             K1                    L1                            M1                     N1                            O1                           P1
+Donation Amount (Currency Code) | Match Amount | Match Amount (Currency Code) | Payment Funding Source | Payment Gross Amount | Payment Gross Amount (Currency Code) | Merchant Fee | 
+
+            Q1                        R1                    S1                            T1                        U1                            V1             W1               X1    
+Merchant Fee (Currency Code) | Processing Fee | Processing Fee (Currency Code) | Payment Net Amount | Payment Net Amount (Currency Code) | Payment Number | Payment Date | Payment Method | 
+
+        Y1                Z1              AA1             AB1          AC1            AD1                AE1                  AF1                 AG1                AH1                AI1
+Donor First Name | Donor Last Name | Donor Address | Donor City | Donor State | Donor Province | Donor ZIP/Postal Code | Donor Country | Donor Email Address | Donor Telephone | Report it comes from | 
+
+
+The easiest process is to copy and paste the first row from one of the reports and then in AI1, put "Report it comes from".
+This report is meant to be an ongoing consolidation of reports, which is why, the macro does not consider doing the above step in it.
+
+
+
+
+
+
+The following macro is to achieve the rest of consolidation process of the reports.
+
 Sub CombineFiles()
     Dim folderPath As String
     Dim fileName As String
