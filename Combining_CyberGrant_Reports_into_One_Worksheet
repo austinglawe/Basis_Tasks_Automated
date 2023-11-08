@@ -1,0 +1,58 @@
+Sub CombineFiles()
+    Dim folderPath As String
+    Dim fileName As String
+    Dim wsHome As Worksheet
+    Dim wsCombined As Worksheet
+    Dim lastRow As Long
+    Dim i As Integer
+
+    ' Set the worksheets
+    Set wsHome = ThisWorkbook.Sheets("Home")
+    Set wsCombined = ThisWorkbook.Sheets("All Reports Combined")
+
+    ' Get the folder path from cell O1 in the Home worksheet
+    folderPath = wsHome.Range("O1").Value
+
+    ' Check if folder path exists
+    If Len(folderPath) = 0 Then
+        MsgBox "Folder path is empty. Please provide a valid folder path in cell O1."
+        Exit Sub
+    End If
+
+    ' Get the last used row in column A of the Combined worksheet
+    lastRow = wsCombined.Cells(wsCombined.Rows.Count, "A").End(xlUp).Row
+
+    ' Loop through files in the folder
+    fileName = Dir(folderPath & "\*.*")
+
+    Do While fileName <> ""
+        ' Check if the file is not a directory
+        If Not (GetAttr(folderPath & "\" & fileName) And vbDirectory) = vbDirectory Then
+            ' Check if the file is not already listed in column B of the Home worksheet
+            If wsHome.Cells(wsHome.Rows.Count, "B").End(xlUp).Offset(1, 0).Value <> "x" Then
+                ' Open the file
+                Workbooks.Open folderPath & "\" & fileName
+                ' Capture the correct filename
+                Dim capturedFileName As String
+                capturedFileName = fileName
+                ' Add the file name to column A of the Home worksheet
+                wsHome.Cells(lastRow + 1, "A").Value = capturedFileName
+                ' Increment lastRow
+                lastRow = lastRow + 1
+                ' Copy data (excluding the first row) to the Combined worksheet
+                Workbooks(fileName).Worksheets(1).Rows(2 & ":" & Workbooks(fileName).Worksheets(1).UsedRange.Rows.Count).Copy Destination:=wsCombined.Cells(wsCombined.Rows.Count, "A").End(xlUp).Offset(1, 0)
+                ' Place the corresponding filename in column AI next to the newly pasted rows
+                wsCombined.Cells(wsCombined.Rows.Count, "AI").End(xlUp).Offset(1, 0).Resize(Workbooks(fileName).Worksheets(1).UsedRange.Rows.Count - 1, 1).Value = capturedFileName
+                ' Mark the file as "x" in column B of the Home worksheet if the current row is greater than 2 and doesn't have "Completed" in column B
+                If lastRow > 1 And wsHome.Cells(lastRow, "B").Value <> "Completed" Then
+                    wsHome.Cells(lastRow, "B").Value = "x"
+                End If
+                ' Close the file
+                Workbooks(fileName).Close SaveChanges:=False
+            End If
+        End If
+        ' Get the next file
+        fileName = Dir
+    Loop
+End Sub
+
