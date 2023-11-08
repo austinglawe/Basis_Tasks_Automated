@@ -1,0 +1,25 @@
+I want to create a macro that does the following. 
+I first want an input prompt for the user: "Please input a file path to consolidate the reports.” 
+For the user input, save it as the variable "file_path".
+Check if the file path exists. 
+If it doesn’t exist, come up with a message that says “I’m sorry, this file path does not exist. To try again, re-run the macro with a new file path." Then kill the macro after the user clicks Okay.
+If the file path does exist then check to see the number of files in the file path. Make a variable to hold that number and call it "file_path_count".
+If the file_path_count is less than 1, kill the macro.
+If the file_path_count is greater than 0, then check the "Home" worksheet. If A1 is not "File Name", make A1 "File Name". If B1 is not "Completed", make B1 "Completed".
+From here, if file_path_count = 1,
+Check column A to see where the data ends (use a max count) and save that count as the variable called "home_column_a_max".
+Now take the file name of the file in "file_path" and save that as a variable called "current_file_name". Take that name and place it in column A, in the row home_column_a_max + 1.
+Then go to the "All Reports Combined" worksheet and get the max number from column A of that and save that variable as "reports_column_a_max".
+Then go into the the file from the file path, and copy row 14 into the "All Reports Combined" worksheet starting in column A at the reports_column_a_max + 1.
+Then in the same row, column P, I want you to put the file name. (current_file_name)
+Once that is done. Close the file you just copied. Then go to the "Home" tab and put an "x" in column B next to the file path name, that was just inserted in column A.
+Once this is complete. End the macro.
+If the file_path_count is greater than 1. Then start a loop process.
+Check column A to see where the data ends (use a max count) and save that count as the variable called "home_column_a_max".
+Now take the first file name of the file in "file_path" and save that as a variable called "current_file_name". Take that name and place it in column A, in the row home_column_a_max + 1.
+Then go to the "All Reports Combined" worksheet and get the max number from column A of that and save that variable as "reports_column_a_max".
+Then go into the the file from the file path, and copy row 14 to the end of the data. If it is row 2000, then rows 14-2000. If it is 300 then rows 14-300. If it is 15, then rows 14-15.
+And then paste it into the "All Reports Combined" worksheet starting in column A at the reports_column_a_max + 1.
+Then in the same rows, column P, I want you to put the file name. (current_file_name) for all the rows that were copied.
+Once that is done. Close the file you just copied. Then go to the "Home" tab and put an "x" in column B next to the file path name, that was just inserted in column A.
+Once this is complete continue the loop, renaming variable accordingly, until all the files are accounted for.
