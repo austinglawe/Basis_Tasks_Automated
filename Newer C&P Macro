@@ -7,6 +7,7 @@ Sub ConsolidateReports()
     Dim wsHome As Worksheet
     Dim wsAllReports As Worksheet
     Dim wsTemp As Worksheet
+    Dim lastRow As Long
     Dim i As Integer
 
     ' Prompt the user for a file path
@@ -39,56 +40,56 @@ Sub ConsolidateReports()
     If wsAllReports.Cells(1, 1).Value <> "Sweep_ID" Then
         wsAllReports.Cells(1, 1).Value = "Sweep_ID"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "Order_Number" Then
-        wsAllReports.Cells(1, 1).Value = "Order_Number"
+    If wsAllReports.Cells(1, 2).Value <> "Order_Number" Then
+        wsAllReports.Cells(1, 2).Value = "Order_Number"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "C&P_Transaction_Date" Then
-        wsAllReports.Cells(1, 1).Value = "C&P_Transaction_Date"
+    If wsAllReports.Cells(1, 3).Value <> "C&P_Transaction_Date" Then
+        wsAllReports.Cells(1, 3).Value = "C&P_Transaction_Date"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "C&P_Fund_Date" Then
-        wsAllReports.Cells(1, 1).Value = "C&P_Fund_Date"
+    If wsAllReports.Cells(1, 4).Value <> "C&P_Fund_Date" Then
+        wsAllReports.Cells(1, 4).Value = "C&P_Fund_Date"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "First_Name" Then
-        wsAllReports.Cells(1, 1).Value = "First_Name"
+    If wsAllReports.Cells(1, 5).Value <> "First_Name" Then
+        wsAllReports.Cells(1, 5).Value = "First_Name"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "Last_Name" Then
-        wsAllReports.Cells(1, 1).Value = "Last_Name"
+    If wsAllReports.Cells(1, 6).Value <> "Last_Name" Then
+        wsAllReports.Cells(1, 6).Value = "Last_Name"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "Gross_Amount" Then
-        wsAllReports.Cells(1, 1).Value = "Gross_Amount"
+    If wsAllReports.Cells(1, 7).Value <> "Gross_Amount" Then
+        wsAllReports.Cells(1, 7).Value = "Gross_Amount"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "Per_Transaction_Fees" Then
-        wsAllReports.Cells(1, 1).Value = "Per_Transaction_Fees"
+    If wsAllReports.Cells(1, 8).Value <> "Per_Transaction_Fees" Then
+        wsAllReports.Cells(1, 8).Value = "Per_Transaction_Fees"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "Discount Fees" Then
-        wsAllReports.Cells(1, 1).Value = "Discount Fees"
+    If wsAllReports.Cells(1, 9).Value <> "Discount Fees" Then
+        wsAllReports.Cells(1, 9).Value = "Discount Fees"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "Net_Amount" Then
-        wsAllReports.Cells(1, 1).Value = "Net_Amount"
+    If wsAllReports.Cells(1, 10).Value <> "Net_Amount" Then
+        wsAllReports.Cells(1, 10).Value = "Net_Amount"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "Order_Number_Trimmed" Then
-        wsAllReports.Cells(1, 1).Value = "Order_Number_Trimmed"
+    If wsAllReports.Cells(1, 11).Value <> "Order_Number_Trimmed" Then
+        wsAllReports.Cells(1, 11).Value = "Order_Number_Trimmed"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "Transaction_Date" Then
-        wsAllReports.Cells(1, 1).Value = "Transaction_Date"
+    If wsAllReports.Cells(1, 12).Value <> "Transaction_Date" Then
+        wsAllReports.Cells(1, 12).Value = "Transaction_Date"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "Fund_Date" Then
-        wsAllReports.Cells(1, 1).Value = "Fund_Date"
+    If wsAllReports.Cells(1, 13).Value <> "Fund_Date" Then
+        wsAllReports.Cells(1, 13).Value = "Fund_Date"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "CNP_School_ID" Then
-        wsAllReports.Cells(1, 1).Value = "CNP_School_ID"
+    If wsAllReports.Cells(1, 14).Value <> "CNP_School_ID" Then
+        wsAllReports.Cells(1, 14).Value = "CNP_School_ID"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "CNP_School_ID-Sweep_ID" Then
-        wsAllReports.Cells(1, 1).Value = "CNP_School_ID-Sweep_ID"
+    If wsAllReports.Cells(1, 15).Value <> "CNP_School_ID-Sweep_ID" Then
+        wsAllReports.Cells(1, 15).Value = "CNP_School_ID-Sweep_ID"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "File_Name" Then
-        wsAllReports.Cells(1, 1).Value = "File_Name"
+    If wsAllReports.Cells(1, 16).Value <> "File_Name" Then
+        wsAllReports.Cells(1, 16).Value = "File_Name"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "School_ID-Transaction_Date" Then
-        wsAllReports.Cells(1, 1).Value = "School_ID-Transaction_Date"
+    If wsAllReports.Cells(1, 17).Value <> "School_ID-Transaction_Date" Then
+        wsAllReports.Cells(1, 17).Value = "School_ID-Transaction_Date"
     End If
-    If wsAllReports.Cells(1, 1).Value <> "School_ID-Fund_Date" Then
-        wsAllReports.Cells(1, 1).Value = "School_ID-Fund_Date"
+    If wsAllReports.Cells(1, 18).Value <> "School_ID-Fund_Date" Then
+        wsAllReports.Cells(1, 18).Value = "School_ID-Fund_Date"
     End If
 
     ' Get the file count in the specified directory
@@ -105,8 +106,6 @@ Sub ConsolidateReports()
         Exit Sub
     End If
 
-
-
     ' Loop through each file in the directory
     file = Dir(file_path & "\*.*")
     Do While file <> ""
@@ -116,10 +115,13 @@ Sub ConsolidateReports()
         ' Find the last row in column A of the Home sheet
         home_column_a_max = wsHome.Cells(wsHome.Rows.Count, 1).End(xlUp).Row
 
-        ' Place current_file_name in column A below where the data ends
+        ' Add the file name to column A of the Home worksheet
         wsHome.Cells(home_column_a_max + 1, 1).Value = current_file_name
-
-        ' Find the last row in column A of the All Reports Combined sheet
+        
+        ' Redefine the last row in column A of the Home sheet
+        home_column_a_max = wsHome.Cells(wsHome.Rows.Count, 1).End(xlUp).Row
+        
+        ' Find the last row in column A of the the All Reports Combined worksheet
         reports_column_a_max = wsAllReports.Cells(wsAllReports.Rows.Count, 1).End(xlUp).Row
 
         ' Open the file and copy rows 14 to the end of the data
@@ -129,13 +131,25 @@ Sub ConsolidateReports()
         ' Put current_file_name in column P for all the copied rows
         wsAllReports.Range("P" & reports_column_a_max + 1 & ":P" & reports_column_a_max + (wsTemp.Cells(wsTemp.Rows.Count, 1).End(xlUp).Row - 13)).Value = current_file_name
 
+        ' Redefine the last row in column A of the the All Reports Combined worksheet
+        reports_column_a_max = wsAllReports.Cells(wsAllReports.Rows.Count, 1).End(xlUp).Row
+        
         ' Close the opened file
         wsTemp.Parent.Close
 
-        ' Put an "x" in column B next to the file path name in Home sheet
-        wsHome.Cells(home_column_a_max + 1, 2).Value = "x"
+        ' Mark the file as "x" in column B of the Home worksheet if the current row is greater than 1 and doesn't have "Completed" in column B
+        If home_column_a_max > 1 And wsHome.Cells(home_column_a_max, "B").Value <> "Completed" Then
+            wsHome.Cells(home_column_a_max, "B").Value = "x"
+        End If
 
         ' Move to the next file
         file = Dir
     Loop
+    
+    ' Autofit column widths in the All Reports Combined worksheet and Home worksheet
+    wsAllReports.UsedRange.Columns.AutoFit
+    wsHome.UsedRange.Columns.AutoFit
+    
+    
 End Sub
+
