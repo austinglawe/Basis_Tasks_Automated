@@ -91,8 +91,6 @@ Sub ConsolidateReports()
         wsAllReports.Cells(1, 1).Value = "School_ID-Fund_Date"
     End If
 
-
-
     ' Get the file count in the specified directory
     file_path_count = 0
     Dim file As String
@@ -106,6 +104,8 @@ Sub ConsolidateReports()
     If file_path_count < 1 Then
         Exit Sub
     End If
+
+
 
     ' Loop through each file in the directory
     file = Dir(file_path & "\*.*")
